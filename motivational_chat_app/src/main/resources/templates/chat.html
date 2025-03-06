@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
+    <title>Chat Années 80</title>
     <style>
         * {
             box-sizing: border-box;
@@ -12,29 +12,38 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #dcdcdc; 
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffcc00);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s infinite alternate;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             padding: 20px;
+            color: #fff;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
         .container {
-            background: white;
+            background: rgba(0, 0, 0, 0.8);
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
             width: 100%;
             max-width: 650px;
             text-align: center;
         }
 
         h1 {
-            color: #333;
+            color: #ff00ff;
             margin-bottom: 20px;
-            font-size: 1.8em;
+            font-size: 1.5em;
+            text-shadow: 2px 2px 5px #00ffff;
         }
 
         form {
@@ -46,20 +55,22 @@
 
         label {
             text-align: left;
-            font-size: 1.1em;
-            color: #555;
+            font-size: 1em;
+            color: #ffcc00;
         }
 
         input {
             padding: 12px;
-            border: 1px solid #ccc;
+            border: 2px solid #ff00ff;
             border-radius: 5px;
             font-size: 1em;
             width: 100%;
+            background-color: black;
+            color: #00ffff;
         }
 
         button {
-            background-color: #004085;
+            background-color: #ff00ff;
             color: white;
             padding: 12px 25px;
             border: none;
@@ -67,57 +78,41 @@
             cursor: pointer;
             font-size: 1.1em;
             width: auto;
-            margin: 0 auto; 
+            margin: 0 auto;
+            box-shadow: 0 0 10px #ff00ff;
+            transition: transform 0.2s;
         }
 
         button:hover {
-            background-color: #003366;
-        }
-
-        h2 {
-            color: #444;
-            margin-top: 20px;
-        }
-
-        .link {
-            display: inline-block;
-            margin-top: 15px;
-            color: #007bff;
-            font-size: 1.1em;
-            text-decoration: none;
-        }
-
-        .link:hover {
-            text-decoration: underline;
+            background-color: #00ffff;
+            box-shadow: 0 0 10px #00ffff;
+            transform: scale(1.1);
         }
 
         .response-container {
             margin-top: 30px;
             padding: 20px;
-            background-color:  #004085;
+            background-color: rgba(0, 0, 0, 0.9);
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-			text-align: center;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center; 
+            box-shadow: 0 0 20px #ffcc00;
+            text-align: center;
         }
 
         .response-container h2 {
-            color: #fff;
+            color: #ffcc00;
             margin-bottom: 15px;
         }
 
         .response-container p {
-            color: #fff;
+            color: #00ffff;
             font-size: 1.1em;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Bienvenue dans le chat</h1>
+        <h1>Bienvenue dans le MOTIVATIONAL CHAT !!</h1>
         <form action="/sendMessage" method="post">
             <div>
                 <label for="username">Nom d'utilisateur :</label>
@@ -130,11 +125,11 @@
             <button type="submit">Envoyer</button>
         </form>
 
-        <!-- Affichage de la réponse seulement si elle existe -->
         <div th:if="${response}" class="response-container">
             <h2> Citation :</h2>
             <p th:text="${response}"></p>
         </div>
+        <a href="/discussion">voir les discussions</a>
     </div>
 </body>
 </html>
